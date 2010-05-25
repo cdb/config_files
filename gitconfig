@@ -1,5 +1,19 @@
 # ADD LOCAL CONFIGURATION HERE
-
+[user]
+  name = Cameron Booth
+  email = cameron@cdbdesign.net
+[github]
+	user = cdb
+	token = 9af6d836485da05f9a7a0967ab3bbb09
+[alias]
+  co = checkout
+  ci = commit
+[git-tmbundle]
+  gitnub-path = /user/local/bin/nub
+[core]
+  editor = mate -w
+[color]
+  ui = auto
 
 # DO NOT EDIT BELOW THIS LINE
 [push]
