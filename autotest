@@ -1,0 +1,14 @@
+require 'autotest/growl'
+require 'autotest/fsevent' #osx specific file changed event notification
+
+Autotest::Growl::show_modified_files = true #which changes prompted the autospec run
+# Autotest::Growl::remote_notification = true #networked growl, to work-around disappearing notifications
+
+Autotest.add_hook :initialize do |at|
+  %w{.git .svn .hg .DS_Store ._* log}.each {|exception|at.add_exception(exception)}
+
+  at.add_mapping(/lib\/(.*).rb/, true) do |filename, matchdata|
+    # puts "Mapping #{filename} with #{metadata[1]}"
+    ["test/#{matchdata[1]}_unit_test.rb"]
+  end
+end

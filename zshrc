@@ -1,5 +1,5 @@
 # use vim as an editor
-export EDITOR=vim
+export EDITOR=mate
 
 # aliases
 if [ -e "$HOME/.aliases" ]; then
@@ -30,8 +30,7 @@ setopt histignoredups
 export ZSH=$HOME/.oh-my-zsh
 
 # Set to the name theme to load.
-# Look in ~/.oh-my-zsh/the
-mes/
+# Look in ~/.oh-my-zsh/themes/
 export ZSH_THEME="robbyrussell"
 
 # Set to this to use case-sensitive completion
@@ -47,6 +46,14 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 
 export PATH=/usr/local/sbin:$PATH
+export PATH=$PATH:/Users/cameron/.gem/ruby/1.8/bin
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # RVM
 source $HOME/.rvm/scripts/rvm
+
+# Add my key because it doesn't persist across logins
+ssh-add ~/.ssh/id_rsa
+
+# Something about PERL for running the mechanize script
+eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)

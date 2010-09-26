@@ -4,16 +4,13 @@ if ENV.include?('RAILS_ENV') && !Object.const_defined?('RAILS_DEFAULT_LOGGER')
   RAILS_DEFAULT_LOGGER = Logger.new(STDOUT)
 end
 
-# Autocomplete
 require 'irb/completion'
-
-# Prompt behavior
-ARGV.concat [ "--readline", "--prompt-mode", "simple" ]
-
-# History
 require 'irb/ext/save-history'
-IRB.conf[:SAVE_HISTORY] = 100
+ARGV.concat [ "--readline", "--prompt-mode", "simple" ]
+IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
+
+
 
 # Easily print methods local to an object's class
 class Object
@@ -26,4 +23,19 @@ end
 def pbcopy(string)
   `echo "#{string}" | pbcopy`
   string
+end
+
+
+# def history
+#   puts Readline::HISTORY.entries.split("exit").last[0..-2].join("\n")
+# end
+
+begin
+  require 'rubygems'
+  require 'wirble'
+
+  Wirble.init
+  Wirble.colorize
+rescue LoadError => err
+  warn "Couldn't load Wirble: #{err}"
 end
